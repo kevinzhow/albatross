@@ -69,6 +69,8 @@ extension FeishuEvent {
         
         var feishuContent: [[FeishuEvent.Content.Post.ZhCN.Content]] = []
         
+        feishuContent.append([FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "branch \(event.ref)", href: nil)])
+        
         for commit in event.commits {
             feishuContent.append([
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: commit.message, href: commit.url.absoluteString),
@@ -76,12 +78,10 @@ extension FeishuEvent {
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "author \(commit.author.name)", href: nil)
             ])
         }
-        
-        
-        let pusher = event.pusher.name
-        
-        feishuContent.append([FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "from \(pusher):", href: nil)
-                             ])
+//
+//        let pusher = event.pusher.name
+//
+//        feishuContent.append([FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "from \(pusher):", href: nil)])
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: feishuContent))))
     }
