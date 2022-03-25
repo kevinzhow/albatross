@@ -28,6 +28,6 @@ final class AppTests: XCTestCase {
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
         
         let article = try decoder.decode(GithubPushEvent.self, from: data)
-        print(article)
+        print(FeishuEvent.createGithubPushEvent(event: article))
     }
 }

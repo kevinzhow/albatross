@@ -62,4 +62,19 @@ extension FeishuEvent {
             ],
         ]))))
     }
+    
+    static func createGithubPushEvent(event: GithubPushEvent) -> FeishuEvent {
+        
+        let title = event.repository.name
+        
+        let commits = event.commits.compactMap { FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: $0.message, href: $0.url.absoluteString) }
+        
+        let pusher = event.pusher.name
+        
+        return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [
+                                                                                                                                                                commits,
+            [FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "from \(pusher):", href: nil)
+            ],
+        ]))))
+    }
 }

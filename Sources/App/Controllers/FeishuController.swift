@@ -18,17 +18,29 @@ struct FeishuController: RouteCollection {
     }
     
     func forward(req: Request) async throws -> HTTPStatus {
-        guard let githubEvent = req.body.string else {
+        
+        var feishuEvent: FeishuEvent?
+        
+        if let githubPush = try? req.content.decode(GithubPushEvent.self) {
+            feishuEvent = FeishuEvent.createGithubPushEvent(event: githubPush)
+        } else {
+            guard let githubEvent = req.body.string else {
+                return .notAcceptable
+            }
+            let data = githubEvent.data(using: .utf8)
+            let json = try JSON(data: data!)
+            
+            if json["action"] == "deleted" {
+                return .ok
+            }
+            
+            feishuEvent = FeishuEvent.createGithubCommentIssueEvent(json: json)
+        }
+        
+        guard let feishuEvent = feishuEvent else {
             return .notAcceptable
         }
-        let data = githubEvent.data(using: .utf8)
-        let json = try JSON(data: data!)
-        
-        if json["action"] == "deleted" {
-            return .ok
-        }
-        
-        let feishuEvent = FeishuEvent.createGithubCommentIssueEvent(json: json)
+
         let _ = try await req.client.post("https://open.feishu.cn/open-apis/bot/v2/hook/bf70bd6e-ae83-458b-9a4d-f5d433baa2e1") { req in
             try req.content.encode(feishuEvent)
         }
