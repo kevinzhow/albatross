@@ -23,6 +23,11 @@ struct FeishuController: RouteCollection {
         }
         let data = githubEvent.data(using: .utf8)
         let json = try JSON(data: data!)
+        
+        if json["action"] == "deleted" {
+            return .ok
+        }
+        
         let feishuEvent = FeishuEvent.createGithubCommentIssueEvent(json: json)
         let _ = try await req.client.post("https://open.feishu.cn/open-apis/bot/v2/hook/bf70bd6e-ae83-458b-9a4d-f5d433baa2e1") { req in
             try req.content.encode(feishuEvent)

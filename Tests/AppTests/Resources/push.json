@@ -1,0 +1,194 @@
+{
+  "ref": "refs/heads/feat/feature-control",
+  "before": "c1de526fbfb52b78e04e34514d3b3ed83d3683b2",
+  "after": "ba8f7280ea9caed52e7527baee6f4b70099efd66",
+  "repository": {
+    "id": 463884334,
+    "node_id": "R_kgDOG6ZQLg",
+    "name": "japanese-reading-view-vue",
+    "full_name": "kevinzhow/japanese-reading-view-vue",
+    "private": true,
+    "owner": {
+      "name": "kevinzhow",
+      "email": "kevinchou.c@gmail.com",
+      "login": "kevinzhow",
+      "id": 1156192,
+      "node_id": "MDQ6VXNlcjExNTYxOTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1156192?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kevinzhow",
+      "html_url": "https://github.com/kevinzhow",
+      "followers_url": "https://api.github.com/users/kevinzhow/followers",
+      "following_url": "https://api.github.com/users/kevinzhow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kevinzhow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kevinzhow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kevinzhow/subscriptions",
+      "organizations_url": "https://api.github.com/users/kevinzhow/orgs",
+      "repos_url": "https://api.github.com/users/kevinzhow/repos",
+      "events_url": "https://api.github.com/users/kevinzhow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kevinzhow/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "html_url": "https://github.com/kevinzhow/japanese-reading-view-vue",
+    "description": "A japanese read view in Vue",
+    "fork": false,
+    "url": "https://github.com/kevinzhow/japanese-reading-view-vue",
+    "forks_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/forks",
+    "keys_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/teams",
+    "hooks_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/hooks",
+    "issue_events_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/events",
+    "assignees_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/tags",
+    "blobs_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/languages",
+    "stargazers_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/stargazers",
+    "contributors_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/contributors",
+    "subscribers_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/subscribers",
+    "subscription_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/subscription",
+    "commits_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/issues/comments{/number}",
+    "contents_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/merges",
+    "archive_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/downloads",
+    "issues_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/labels{/name}",
+    "releases_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/releases{/id}",
+    "deployments_url": "https://api.github.com/repos/kevinzhow/japanese-reading-view-vue/deployments",
+    "created_at": 1645887760,
+    "updated_at": "2022-03-24T07:01:10Z",
+    "pushed_at": 1648234363,
+    "git_url": "git://github.com/kevinzhow/japanese-reading-view-vue.git",
+    "ssh_url": "git@github.com:kevinzhow/japanese-reading-view-vue.git",
+    "clone_url": "https://github.com/kevinzhow/japanese-reading-view-vue.git",
+    "svn_url": "https://github.com/kevinzhow/japanese-reading-view-vue",
+    "homepage": null,
+    "size": 829,
+    "stargazers_count": 0,
+    "watchers_count": 0,
+    "language": "CSS",
+    "has_issues": true,
+    "has_projects": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "has_pages": false,
+    "forks_count": 1,
+    "mirror_url": null,
+    "archived": false,
+    "disabled": false,
+    "open_issues_count": 2,
+    "license": null,
+    "allow_forking": true,
+    "is_template": false,
+    "topics": [
+
+    ],
+    "visibility": "private",
+    "forks": 1,
+    "open_issues": 2,
+    "watchers": 0,
+    "default_branch": "develop",
+    "stargazers": 0,
+    "master_branch": "develop"
+  },
+  "pusher": {
+    "name": "kevinzhow",
+    "email": "kevinchou.c@gmail.com"
+  },
+  "sender": {
+    "login": "kevinzhow",
+    "id": 1156192,
+    "node_id": "MDQ6VXNlcjExNTYxOTI=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1156192?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/kevinzhow",
+    "html_url": "https://github.com/kevinzhow",
+    "followers_url": "https://api.github.com/users/kevinzhow/followers",
+    "following_url": "https://api.github.com/users/kevinzhow/following{/other_user}",
+    "gists_url": "https://api.github.com/users/kevinzhow/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/kevinzhow/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/kevinzhow/subscriptions",
+    "organizations_url": "https://api.github.com/users/kevinzhow/orgs",
+    "repos_url": "https://api.github.com/users/kevinzhow/repos",
+    "events_url": "https://api.github.com/users/kevinzhow/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/kevinzhow/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "created": false,
+  "deleted": false,
+  "forced": false,
+  "base_ref": null,
+  "compare": "https://github.com/kevinzhow/japanese-reading-view-vue/compare/c1de526fbfb5...ba8f7280ea9c",
+  "commits": [
+    {
+      "id": "ba8f7280ea9caed52e7527baee6f4b70099efd66",
+      "tree_id": "e0ab8daa3be7c1d7521801db422b29e102c15059",
+      "distinct": true,
+      "message": "Update README.md",
+      "timestamp": "2022-03-26T02:52:42+08:00",
+      "url": "https://github.com/kevinzhow/japanese-reading-view-vue/commit/ba8f7280ea9caed52e7527baee6f4b70099efd66",
+      "author": {
+        "name": "kevinzhow",
+        "email": "kevinchou.c@gmail.com",
+        "username": "kevinzhow"
+      },
+      "committer": {
+        "name": "kevinzhow",
+        "email": "kevinchou.c@gmail.com",
+        "username": "kevinzhow"
+      },
+      "added": [
+
+      ],
+      "removed": [
+
+      ],
+      "modified": [
+        "README.md"
+      ]
+    }
+  ],
+  "head_commit": {
+    "id": "ba8f7280ea9caed52e7527baee6f4b70099efd66",
+    "tree_id": "e0ab8daa3be7c1d7521801db422b29e102c15059",
+    "distinct": true,
+    "message": "Update README.md",
+    "timestamp": "2022-03-26T02:52:42+08:00",
+    "url": "https://github.com/kevinzhow/japanese-reading-view-vue/commit/ba8f7280ea9caed52e7527baee6f4b70099efd66",
+    "author": {
+      "name": "kevinzhow",
+      "email": "kevinchou.c@gmail.com",
+      "username": "kevinzhow"
+    },
+    "committer": {
+      "name": "kevinzhow",
+      "email": "kevinchou.c@gmail.com",
+      "username": "kevinzhow"
+    },
+    "added": [
+
+    ],
+    "removed": [
+
+    ],
+    "modified": [
+      "README.md"
+    ]
+  }
+}

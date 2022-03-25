@@ -38,7 +38,8 @@ let package = Package(
                         .product(name: "XCTVapor", package: "vapor"),
                     ],
                     resources: [
-                        .copy("Resources/createComment.json")
+                        .copy("Resources/createComment.json"),
+                        .copy("Resources/push.json")
                     ]
                    )
     ]

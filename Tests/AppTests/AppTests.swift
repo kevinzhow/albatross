@@ -1,9 +1,10 @@
 @testable import App
 import XCTVapor
 import SwiftyJSON
+import Foundation
 
 final class AppTests: XCTestCase {
-    func testHelloWorld() throws {
+    func testComment() throws {
         
         guard let url = Bundle.module.url(forResource: "createComment", withExtension: "json") else {
             throw Abort(.notFound)
@@ -11,21 +12,22 @@ final class AppTests: XCTestCase {
         let data = try Data(contentsOf: url)
         
         let json = try JSON(data: data)
-        print(json["action"])
-        print(json["issue"])
-        print(json["comment"]["body"])
+        print(FeishuEvent.createGithubCommentIssueEvent(json: json))
+    }
+    
+    func testPush() throws {
         
-        let issueName = json["issue"]["title"]
-        let issueNumber = json["issue"]["number"]
+        guard let url = Bundle.module.url(forResource: "push", withExtension: "json") else {
+            throw Abort(.notFound)
+        }
+        let data = try Data(contentsOf: url)
         
-        let title = "\(json["repository"]["name"]) #\(issueNumber) \(issueName)"
+        let decoder = JSONDecoder()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:sszzz"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
         
-        let comment = json["comment"]["body"]
-        
-        let username = json["sender"]["login"]
-        print(json["sender"]["login"])
-        
-        print("\(title)")
-        print("\(username) says \(comment)")
+        let article = try decoder.decode(GithubPushEvent.self, from: data)
+        print(article)
     }
 }

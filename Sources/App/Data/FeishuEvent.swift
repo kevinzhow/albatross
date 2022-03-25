@@ -38,7 +38,7 @@ extension FeishuEvent.Content.Post.ZhCN {
     struct Content: Codable {
         let tag: String
         let text: String
-        let href: URL?
+        let href: String?
     }
 }
 
@@ -46,13 +46,20 @@ extension FeishuEvent {
     static func createGithubCommentIssueEvent(json: JSON) -> FeishuEvent {
         let issueName = json["issue"]["title"]
         let issueNumber = json["issue"]["number"]
+        let issueURL = json["issue"]["url"].string ?? ""
         
-        let title = "\(json["repository"]["name"]) #\(issueNumber) \(issueName)"
+        let title = "\(json["repository"]["name"])"
         
         let comment = json["comment"]["body"]
+        let commentURL = json["comment"]["url"].string ?? ""
         
         let username = json["sender"]["login"]
         
-        return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [[FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(username): \(comment)", href: nil)]]))))
+        return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [
+            [FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "#\(issueNumber) \(issueName)", href: issueURL)],
+            [FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(username):", href: nil),
+             FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "\(comment)", href: commentURL)
+            ],
+        ]))))
     }
 }
