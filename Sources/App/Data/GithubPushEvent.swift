@@ -26,7 +26,7 @@ struct GithubPushEvent: Codable {
         case ref
         case before
         case after
-//        case repository
+        case repository
         case pusher
         case sender
         case created
@@ -88,8 +88,8 @@ extension GithubPushEvent {
         let releasesURL: String
         let deploymentsURL: URL
         let createdAt: Double
-        let updatedAt: Double
-        let pushedAt: Date
+        let updatedAt: Date
+        let pushedAt: Double
         let gitURL: URL
         let sshURL: String
         let cloneURL: URL
