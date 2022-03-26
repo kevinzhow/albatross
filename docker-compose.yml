@@ -20,8 +20,8 @@ x-shared_environment:
   ADMIN_USERNAME: albatross
   ADMIN_PASSWORD: albatross
   DB_URL: /app/data/db.sqlite
-  TLS_CERT: /app/certs/cert.pem
-  TLS_KEY: /app/certs/key.pem
+#  TLS_CERT: /app/certs/cert.pem
+#  TLS_KEY: /app/certs/key.pem
 
 services:
   app:
