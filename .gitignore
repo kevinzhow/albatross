@@ -9,3 +9,4 @@ db.sqlite
 .env
 testing.sqlite
 certs
+data
