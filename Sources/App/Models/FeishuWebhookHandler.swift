@@ -1,7 +1,7 @@
 import Fluent
 import Vapor
 
-final class FeishuWebhook: Model, Content {
+final class FeishuWebhookHandler: Model, Content {
     static let schema = "feishu+webhook"
     struct FieldKeys {
         static var title: FieldKey { "title" }
@@ -12,13 +12,13 @@ final class FeishuWebhook: Model, Content {
     @ID(key: .id)
     var id: UUID?
 
-    @Field(key: FeishuWebhook.FieldKeys.title)
+    @Field(key: FeishuWebhookHandler.FieldKeys.title)
     var title: String
     
-    @Field(key: FeishuWebhook.FieldKeys.url)
+    @Field(key: FeishuWebhookHandler.FieldKeys.url)
     var url: String
     
-    @OptionalField(key: FeishuWebhook.FieldKeys.secret)
+    @OptionalField(key: FeishuWebhookHandler.FieldKeys.secret)
     var secret: String?
 
     init() { }

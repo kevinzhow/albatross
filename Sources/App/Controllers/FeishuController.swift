@@ -12,12 +12,12 @@ struct FeishuController: RouteCollection {
         }
     }
 
-    func index(req: Request) async throws -> [FeishuWebhook] {
-        try await FeishuWebhook.query(on: req.db).all()
+    func index(req: Request) async throws -> [FeishuWebhookHandler] {
+        try await FeishuWebhookHandler.query(on: req.db).all()
     }
     
     func forward(req: Request) async throws -> HTTPStatus {
-        guard let webhook = try await FeishuWebhook.find(req.parameters.get("webhookID"), on: req.db) else {
+        guard let webhook = try await FeishuWebhookHandler.find(req.parameters.get("webhookID"), on: req.db) else {
             throw Abort(.notFound)
         }
         
@@ -75,14 +75,14 @@ struct FeishuController: RouteCollection {
         return .ok
     }
 
-    func create(req: Request) async throws -> FeishuWebhook {
-        let todo = try req.content.decode(FeishuWebhook.self)
+    func create(req: Request) async throws -> FeishuWebhookHandler {
+        let todo = try req.content.decode(FeishuWebhookHandler.self)
         try await todo.save(on: req.db)
         return todo
     }
 
     func delete(req: Request) async throws -> HTTPStatus {
-        guard let todo = try await FeishuWebhook.find(req.parameters.get("webhookID"), on: req.db) else {
+        guard let todo = try await FeishuWebhookHandler.find(req.parameters.get("webhookID"), on: req.db) else {
             throw Abort(.notFound)
         }
         try await todo.delete(on: req.db)

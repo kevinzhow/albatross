@@ -65,12 +65,12 @@ curl --location --request POST 'https://yourdomain.com/hook/feishu' \
 
 #### Webhook Handler Create Response
 
-Record your `{webhook-id}`.
+Record your `{webhook-handler-id}`.
 
 ```json
 {
   "url": "https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
-  "id": "{webhook-id}",
+  "id": "{webhook-handler-id}",
   "title": "webhook-name",
   "secret": null
 }
@@ -80,6 +80,8 @@ Record your `{webhook-id}`.
 
 Fill your github webhook form
 
-| Payload URL                                     | Content type     | SSL verification        |
-| ----------------------------------------------- | ---------------- | ----------------------- |
-| https://yourdomain.com/hook/feishu/{webhook-id} | application/json | Enable SSL verification |
+| Field            | Value                                                   |
+| ---------------- | ------------------------------------------------------- |
+| Payload URL      | https://yourdomain.com/hook/feishu/{webhook-handler-id} |
+| Content type     | application/json                                        |
+| SSL verification | Enable SSL verification                                 |

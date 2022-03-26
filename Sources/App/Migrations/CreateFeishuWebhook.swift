@@ -2,7 +2,7 @@ import Fluent
 
 struct CreateFeishuWebhook: AsyncMigration {
     func prepare(on database: Database) async throws {
-        try await database.schema(FeishuWebhook.schema)
+        try await database.schema(FeishuWebhookHandler.schema)
             .id()
             .field("title", .string, .required)
             .field("url", .string, .required)
@@ -11,6 +11,6 @@ struct CreateFeishuWebhook: AsyncMigration {
     }
 
     func revert(on database: Database) async throws {
-        try await database.schema(FeishuWebhook.schema).delete()
+        try await database.schema(FeishuWebhookHandler.schema).delete()
     }
 }
