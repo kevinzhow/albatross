@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct GithubIssueCommentEvent: Codable {
+struct GithubCommitCommentEvent: Codable {
     let action: String
-    let issue: GithubEvent.Issue
     let comment: GithubEvent.Comment
     let repository: GithubEvent.Repository
     let sender: GithubEvent.Sender

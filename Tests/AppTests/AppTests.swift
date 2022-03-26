@@ -66,4 +66,18 @@ final class AppTests: XCTestCase {
         let event = try decoder.decode(GithubIssueEvent.self, from: data)
         print(FeishuEvent.createFromGithubIssueEvent(event: event))
     }
+    
+    func testCommitCommentEvent() throws {
+        
+        guard let url = Bundle.module.url(forResource: "commitComment", withExtension: "json") else {
+            throw Abort(.notFound)
+        }
+        let data = try Data(contentsOf: url)
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
+        
+        let event = try decoder.decode(GithubCommitCommentEvent.self, from: data)
+        print(FeishuEvent.createGithubCommentCommentEvent(event: event))
+    }
 }
