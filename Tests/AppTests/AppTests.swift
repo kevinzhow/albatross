@@ -93,4 +93,18 @@ final class AppTests: XCTestCase {
         let event = try decoder.decode(GithubPullRequestEvent.self, from: data)
         print(FeishuEvent.createFromGithubPullRequestEvent(event: event))
     }
+    
+    func testPullRequestReviewComment() throws {
+        
+        guard let url = Bundle.module.url(forResource: "pullrequestReviewComment", withExtension: "json") else {
+            throw Abort(.notFound)
+        }
+        let data = try Data(contentsOf: url)
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
+        
+        let event = try decoder.decode(GithubPullRequestReviewCommentEvent.self, from: data)
+        print(FeishuEvent.createGithubPullRequestReviewCommentEvent(event: event))
+    }
 }

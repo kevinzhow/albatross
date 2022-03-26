@@ -185,4 +185,25 @@ extension FeishuEvent {
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: feishuContent))))
     }
+    
+    static func createGithubPullRequestReviewCommentEvent(event: GithubPullRequestReviewCommentEvent) -> FeishuEvent {
+        let title = event.repository.name
+        
+        let comment =  event.comment.body
+        let commentURL = event.comment.htmlURL.absoluteString
+        
+        let username = event.sender.login
+        
+        return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [
+            [
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Comment \(event.action) on", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "\(event.comment.path!) line #\(event.comment.line!)", href: event.comment.htmlURL.absoluteString),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "by", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(username)", href: event.sender.htmlURL.absoluteString),
+            ],
+            [
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(comment)", href: nil)
+            ],
+        ]))))
+    }
 }

@@ -61,18 +61,18 @@ extension GithubPullRequestEvent {
         let authorAssociation: String
 //        let autoMerge: Any?
 //        let activeLockReason: Any?
-        let merged: Bool
+        let merged: Bool?
 //        let mergeable: Any?
 //        let rebaseable: Any?
-        let mergeableState: String
+        let mergeableState: String?
 //        let mergedBy: Any?
-        let comments: Int
-        let reviewComments: Int
-        let maintainerCanModify: Bool
-        let commits: Int
-        let additions: Int
-        let deletions: Int
-        let changedFiles: Int
+        let comments: Int?
+        let reviewComments: Int?
+        let maintainerCanModify: Bool?
+        let commits: Int?
+        let additions: Int?
+        let deletions: Int?
+        let changedFiles: Int?
 
         private enum CodingKeys: String, CodingKey {
             case url
@@ -191,7 +191,7 @@ extension GithubPullRequestEvent.PullRequest {
         let `private`: Bool
         let owner: Owner
         let htmlURL: URL
-        let description: String
+        let description: String?
         let fork: Bool
         let url: URL
         let forksURL: URL
@@ -241,7 +241,7 @@ extension GithubPullRequestEvent.PullRequest {
         let size: Int
         let stargazersCount: Int
         let watchersCount: Int
-        let language: String
+        let language: String?
         let hasIssues: Bool
         let hasProjects: Bool
         let hasDownloads: Bool

@@ -30,6 +30,10 @@ struct FeishuController: RouteCollection {
         switch GITHUB_EVENT {
         case "ping":
             return .ok
+        case "pull_request_review_comment":
+            if let event = try? req.content.decode(GithubPullRequestReviewCommentEvent.self) {
+                feishuEvent = FeishuEvent.createGithubPullRequestReviewCommentEvent(event: event)
+            }
         case "issues":
             if let event = try? req.content.decode(GithubIssueEvent.self) {
                 feishuEvent = FeishuEvent.createFromGithubIssueEvent(event: event)

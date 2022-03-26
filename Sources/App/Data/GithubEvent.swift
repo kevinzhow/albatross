@@ -106,7 +106,7 @@ extension GithubEvent {
         let `private`: Bool
         let owner: Owner
         let htmlURL: URL
-        let description: String
+        let description: String?
         let fork: Bool
         let url: URL
         let forksURL: URL
@@ -156,7 +156,7 @@ extension GithubEvent {
         let size: Int
         let stargazersCount: Int
         let watchersCount: Int
-        let language: String
+        let language: String?
         let hasIssues: Bool
         let hasProjects: Bool
         let hasDownloads: Bool
