@@ -85,4 +85,26 @@ extension FeishuEvent {
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: feishuContent))))
     }
+    
+    static func createFromGithubCreateEvent(event: GithubCreateEvent) -> FeishuEvent {
+        
+        let title = event.repository.name
+        
+        var feishuContent: [[FeishuEvent.Content.Post.ZhCN.Content]] = []
+        
+        feishuContent.append([
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "New Branch created by ", href: nil),
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(event.sender.login):", href: event.sender.url.absoluteString)
+        ])
+        
+        feishuContent.append([
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(event.ref)", href: event.repository.url.absoluteString)
+        ])
+//
+//        let pusher = event.pusher.name
+//
+//        feishuContent.append([FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "from \(pusher):", href: nil)])
+        
+        return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: feishuContent))))
+    }
 }

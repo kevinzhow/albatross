@@ -20,16 +20,15 @@ struct FeishuController: RouteCollection {
     func forward(req: Request) async throws -> HTTPStatus {
         
         var feishuEvent: FeishuEvent?
-        
         if let githubPush = try? req.content.decode(GithubPushEvent.self) {
             feishuEvent = FeishuEvent.createGithubPushEvent(event: githubPush)
         } else if let githubEvent = try? req.content.decode(GithubIssueEvent.self) {
-            
             if githubEvent.action == "deleted" {
                 return .ok
             }
-            
             feishuEvent = FeishuEvent.createGithubCommentIssueEvent(event: githubEvent)
+        } else if let githubEvent = try? req.content.decode(GithubCreateEvent.self) {
+            feishuEvent = FeishuEvent.createFromGithubCreateEvent(event: githubEvent)
         }
         
         guard let feishuEvent = feishuEvent else {

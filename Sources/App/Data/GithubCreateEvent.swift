@@ -1,47 +1,27 @@
-//
-//  File.swift
-//  
-//
-//  Created by kevinzhow on 2022/3/26.
-//
-
 import Foundation
 
-struct GithubPushEvent: Codable {
+/// New Branch or Tag Created
+struct GithubCreateEvent: Codable {
     let ref: String
-    let refType: String?
-    let before: String
-    let after: String
+    let refType: String
+    let masterBranch: String
+    let description: String
+    let pusherType: String
     let repository: Repository
-    let pusher: Pusher
     let sender: Sender
-    let created: Bool
-    let deleted: Bool
-    let forced: Bool
-//    let baseRef: Any?
-    let compare: URL
-    let commits: [Commit]
-    let headCommit: HeadCommit
 
     private enum CodingKeys: String, CodingKey {
         case ref
         case refType = "ref_type"
-        case before
-        case after
+        case masterBranch = "master_branch"
+        case description
+        case pusherType = "pusher_type"
         case repository
-        case pusher
         case sender
-        case created
-        case deleted
-        case forced
-//        case baseRef = "base_ref"
-        case compare
-        case commits
-        case headCommit = "head_commit"
     }
 }
 
-extension GithubPushEvent {
+extension GithubCreateEvent {
     struct Repository: Codable {
         let id: Int
         let nodeID: String
@@ -89,9 +69,9 @@ extension GithubPushEvent {
         let labelsURL: String
         let releasesURL: String
         let deploymentsURL: URL
-        let createdAt: Double
+        let createdAt: Date
         let updatedAt: Date
-        let pushedAt: Double
+        let pushedAt: Date
         let gitURL: URL
         let sshURL: String
         let cloneURL: URL
@@ -120,8 +100,6 @@ extension GithubPushEvent {
         let openIssues: Int
         let watchers: Int
         let defaultBranch: String
-        let stargazers: Int
-        let masterBranch: String
 
         private enum CodingKeys: String, CodingKey {
             case id
@@ -201,16 +179,12 @@ extension GithubPushEvent {
             case openIssues = "open_issues"
             case watchers
             case defaultBranch = "default_branch"
-            case stargazers
-            case masterBranch = "master_branch"
         }
     }
 }
 
-extension GithubPushEvent.Repository {
+extension GithubCreateEvent.Repository {
     struct Owner: Codable {
-        let name: String
-        let email: String
         let login: String
         let id: Int
         let nodeID: String
@@ -231,8 +205,6 @@ extension GithubPushEvent.Repository {
         let siteAdmin: Bool
 
         private enum CodingKeys: String, CodingKey {
-            case name
-            case email
             case login
             case id
             case nodeID = "node_id"
@@ -255,14 +227,7 @@ extension GithubPushEvent.Repository {
     }
 }
 
-extension GithubPushEvent {
-    struct Pusher: Codable {
-        let name: String
-        let email: String
-    }
-}
-
-extension GithubPushEvent {
+extension GithubCreateEvent {
     struct Sender: Codable {
         let login: String
         let id: Int
@@ -303,97 +268,5 @@ extension GithubPushEvent {
             case type
             case siteAdmin = "site_admin"
         }
-    }
-}
-
-extension GithubPushEvent {
-    struct Commit: Codable {
-        let id: String
-        let treeID: String
-        let distinct: Bool
-        let message: String
-        let timestamp: Date
-        let url: URL
-        let author: Author
-        let committer: Committer
-//        let added: [Any]
-//        let removed: [Any]
-        let modified: [String]
-
-        private enum CodingKeys: String, CodingKey {
-            case id
-            case treeID = "tree_id"
-            case distinct
-            case message
-            case timestamp
-            case url
-            case author
-            case committer
-//            case added
-//            case removed
-            case modified
-        }
-    }
-}
-
-extension GithubPushEvent.Commit {
-    struct Author: Codable {
-        let name: String
-        let email: String
-        let username: String
-    }
-}
-
-extension GithubPushEvent.Commit {
-    struct Committer: Codable {
-        let name: String
-        let email: String
-        let username: String
-    }
-}
-
-extension GithubPushEvent {
-    struct HeadCommit: Codable {
-        let id: String
-        let treeID: String
-        let distinct: Bool
-        let message: String
-        let timestamp: Date
-        let url: URL
-        let author: Author
-        let committer: Committer
-//        let added: [Any]
-//        let removed: [Any]
-        let modified: [String]
-
-        private enum CodingKeys: String, CodingKey {
-            case id
-            case treeID = "tree_id"
-            case distinct
-            case message
-            case timestamp
-            case url
-            case author
-            case committer
-//            case added
-//            case removed
-            case modified
-        }
-    }
-}
-
-extension GithubPushEvent.HeadCommit {
-    struct Author: Codable {
-        let name: String
-        let email: String
-        let username: String
-    }
-}
-
-extension GithubPushEvent.HeadCommit {
-    struct Committer: Codable {
-        let name: String
-        let email: String
-        let username: String
     }
 }
