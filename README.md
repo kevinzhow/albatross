@@ -41,6 +41,8 @@ LOCAL_CERT=/xx/cert.pem
 LOCAL_KEY=/xx/key.pem
 ```
 
+Excludes `LOCAL_CERT` and `LOCAL_KEY` if you don't need build-in tls support.
+
 ### 3.Up
 
 ```
