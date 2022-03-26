@@ -23,10 +23,7 @@ struct FeishuController: RouteCollection {
         
         if let githubPush = try? req.content.decode(GithubPushEvent.self) {
             feishuEvent = FeishuEvent.createGithubPushEvent(event: githubPush)
-        } else {
-            guard let githubEvent = try? req.content.decode(GithubIssueEvent.self) else {
-                return .notAcceptable
-            }
+        } else if let githubEvent = try? req.content.decode(GithubIssueEvent.self) {
             
             if githubEvent.action == "deleted" {
                 return .ok
