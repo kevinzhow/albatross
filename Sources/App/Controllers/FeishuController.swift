@@ -31,19 +31,23 @@ struct FeishuController: RouteCollection {
                 feishuEvent = FeishuEvent.createFromGithubIssueEvent(event: event)
             }
         case "issue_comment":
-            if let githubEvent = try? req.content.decode(GithubIssueCommentEvent.self) {
-                if githubEvent.action == "deleted" {
+            if let event = try? req.content.decode(GithubIssueCommentEvent.self) {
+                if event.action == "deleted" {
                     return .ok
                 }
-                feishuEvent = FeishuEvent.createGithubCommentIssueEvent(event: githubEvent)
+                feishuEvent = FeishuEvent.createGithubCommentIssueEvent(event: event)
+            }
+        case "commit_comment":
+            if let event = try? req.content.decode(GithubCommitCommentEvent.self) {
+                feishuEvent = FeishuEvent.createGithubCommitCommentEvent(event: event)
             }
         case "create":
-            if let githubEvent = try? req.content.decode(GithubCreateEvent.self) {
-                feishuEvent = FeishuEvent.createFromGithubCreateEvent(event: githubEvent)
+            if let event = try? req.content.decode(GithubCreateEvent.self) {
+                feishuEvent = FeishuEvent.createFromGithubCreateEvent(event: event)
             }
         case "push":
-            if let githubPush = try? req.content.decode(GithubPushEvent.self) {
-                feishuEvent = FeishuEvent.createGithubPushEvent(event: githubPush)
+            if let event = try? req.content.decode(GithubPushEvent.self) {
+                feishuEvent = FeishuEvent.createGithubPushEvent(event: event)
             }
         default:
             return .notAcceptable

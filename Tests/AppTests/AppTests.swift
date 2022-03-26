@@ -78,6 +78,6 @@ final class AppTests: XCTestCase {
         decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
         
         let event = try decoder.decode(GithubCommitCommentEvent.self, from: data)
-        print(FeishuEvent.createGithubCommentCommentEvent(event: event))
+        print(FeishuEvent.createGithubCommitCommentEvent(event: event))
     }
 }
