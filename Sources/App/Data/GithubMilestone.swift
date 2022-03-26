@@ -7,50 +7,49 @@
 
 import Foundation
 
-struct GithubIssueCommentEvent: Codable {
-    let action: String
-    let issue: GithubEvent.Issue
-    let comment: Comment
-    let repository: GithubEvent.Repository
-    let sender: GithubEvent.Sender
-}
-
-
-
-extension GithubIssueCommentEvent {
-    struct Comment: Codable {
+extension GithubEvent.Issue {
+    struct Milestone: Codable {
         let url: URL
         let htmlURL: URL
-        let issueURL: URL
+        let labelsURL: URL
         let id: Int
         let nodeID: String
-        let user: User
+        let number: Int
+        let title: String
+//        let description: Any?
+        let creator: Creator
+        let openIssues: Int
+        let closedIssues: Int
+        let state: String
         let createdAt: Date
         let updatedAt: Date
-        let authorAssociation: String
-        let body: String
-        let reactions: Reaction
-//        let performedViaGithubApp: Any?
+//        let dueOn: Any?
+//        let closedAt: Any?
 
         private enum CodingKeys: String, CodingKey {
             case url
             case htmlURL = "html_url"
-            case issueURL = "issue_url"
+            case labelsURL = "labels_url"
             case id
             case nodeID = "node_id"
-            case user
+            case number
+            case title
+//            case description
+            case creator
+            case openIssues = "open_issues"
+            case closedIssues = "closed_issues"
+            case state
             case createdAt = "created_at"
             case updatedAt = "updated_at"
-            case authorAssociation = "author_association"
-            case body
-            case reactions
-//            case performedViaGithubApp = "performed_via_github_app"
+//            case dueOn = "due_on"
+//            case closedAt = "closed_at"
         }
     }
 }
 
-extension GithubIssueCommentEvent.Comment {
-    struct User: Codable {
+
+extension GithubEvent.Issue.Milestone {
+    struct Creator: Codable {
         let login: String
         let id: Int
         let nodeID: String
@@ -89,34 +88,6 @@ extension GithubIssueCommentEvent.Comment {
             case receivedEventsURL = "received_events_url"
             case type
             case siteAdmin = "site_admin"
-        }
-    }
-}
-
-extension GithubIssueCommentEvent.Comment {
-    struct Reaction: Codable {
-        let url: URL
-        let totalCount: Int
-        let add1: Int
-        let minus1: Int
-        let laugh: Int
-        let hooray: Int
-        let confused: Int
-        let heart: Int
-        let rocket: Int
-        let eyes: Int
-
-        private enum CodingKeys: String, CodingKey {
-            case url
-            case totalCount = "total_count"
-            case add1 = "+1"
-            case minus1 = "-1"
-            case laugh
-            case hooray
-            case confused
-            case heart
-            case rocket
-            case eyes
         }
     }
 }

@@ -52,4 +52,18 @@ final class AppTests: XCTestCase {
         let event = try decoder.decode(GithubCreateEvent.self, from: data)
         print(FeishuEvent.createFromGithubCreateEvent(event: event))
     }
+    
+    func testIssueEvent() throws {
+        
+        guard let url = Bundle.module.url(forResource: "issueEvent", withExtension: "json") else {
+            throw Abort(.notFound)
+        }
+        let data = try Data(contentsOf: url)
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
+        
+        let event = try decoder.decode(GithubIssueEvent.self, from: data)
+        print(FeishuEvent.createFromGithubIssueEvent(event: event))
+    }
 }
