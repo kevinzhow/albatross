@@ -11,9 +11,9 @@ struct GithubPushEvent: Codable {
     let ref: String
     let before: String
     let after: String
-    let repository: GithubEvent.Repository
+    let repository: Repository
     let pusher: Pusher
-    let sender: GithubEvent.Sender
+    let sender: Sender
     let created: Bool
     let deleted: Bool
     let forced: Bool
@@ -39,7 +39,7 @@ struct GithubPushEvent: Codable {
     }
 }
 
-extension GithubEvent {
+extension GithubPushEvent {
     struct Repository: Codable {
         let id: Int
         let nodeID: String
@@ -205,7 +205,7 @@ extension GithubEvent {
     }
 }
 
-extension GithubEvent.Repository {
+extension GithubPushEvent.Repository {
     struct Owner: Codable {
         let name: String
         let email: String
@@ -260,7 +260,7 @@ extension GithubPushEvent {
     }
 }
 
-struct GithubEvent {
+extension GithubPushEvent {
     struct Sender: Codable {
         let login: String
         let id: Int

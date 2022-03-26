@@ -18,9 +18,11 @@ final class AppTests: XCTestCase {
             throw Abort(.notFound)
         }
         let data = try Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
         
-        let json = try JSON(data: data)
-        print(FeishuEvent.createGithubCommentIssueEvent(json: json))
+        let event = try decoder.decode(GithubIssueEvent.self, from: data)
+        print(FeishuEvent.createGithubCommentIssueEvent(event: event))
     }
     
     func testPush() throws {
@@ -33,7 +35,7 @@ final class AppTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
         
-        let article = try decoder.decode(GithubPushEvent.self, from: data)
-        print(FeishuEvent.createGithubPushEvent(event: article))
+        let event = try decoder.decode(GithubPushEvent.self, from: data)
+        print(FeishuEvent.createGithubPushEvent(event: event))
     }
 }

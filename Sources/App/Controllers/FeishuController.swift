@@ -24,17 +24,15 @@ struct FeishuController: RouteCollection {
         if let githubPush = try? req.content.decode(GithubPushEvent.self) {
             feishuEvent = FeishuEvent.createGithubPushEvent(event: githubPush)
         } else {
-            guard let githubEvent = req.body.string else {
+            guard let githubEvent = try? req.content.decode(GithubIssueEvent.self) else {
                 return .notAcceptable
             }
-            let data = githubEvent.data(using: .utf8)
-            let json = try JSON(data: data!)
             
-            if json["action"] == "deleted" {
+            if githubEvent.action == "deleted" {
                 return .ok
             }
             
-            feishuEvent = FeishuEvent.createGithubCommentIssueEvent(json: json)
+            feishuEvent = FeishuEvent.createGithubCommentIssueEvent(event: githubEvent)
         }
         
         guard let feishuEvent = feishuEvent else {

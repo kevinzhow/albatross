@@ -43,17 +43,17 @@ extension FeishuEvent.Content.Post.ZhCN {
 }
 
 extension FeishuEvent {
-    static func createGithubCommentIssueEvent(json: JSON) -> FeishuEvent {
-        let issueName = json["issue"]["title"]
-        let issueNumber = json["issue"]["number"]
-        let issueURL = json["issue"]["url"].string ?? ""
+    static func createGithubCommentIssueEvent(event: GithubIssueEvent) -> FeishuEvent {
+        let issueName = event.issue.title
+        let issueNumber = event.issue.number
+        let issueURL = event.issue.url.absoluteString
         
-        let title = "\(json["repository"]["name"])"
+        let title = event.repository.name
         
-        let comment = json["comment"]["body"]
-        let commentURL = json["comment"]["url"].string ?? ""
+        let comment =  event.comment.body
+        let commentURL = event.comment.url.absoluteString
         
-        let username = json["sender"]["login"]
+        let username = event.sender.login
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [
             [FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "#\(issueNumber) \(issueName)", href: issueURL)],
