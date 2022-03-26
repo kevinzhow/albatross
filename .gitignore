@@ -8,3 +8,4 @@ db.sqlite
 .swiftpm
 .env
 testing.sqlite
+.certs

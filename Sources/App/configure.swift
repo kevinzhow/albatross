@@ -3,6 +3,7 @@ import FluentSQLiteDriver
 import Leaf
 import Vapor
 import CryptoSwift
+import NIOSSL
 
 // configures your application
 public func configure(_ app: Application) throws {
@@ -17,6 +18,14 @@ public func configure(_ app: Application) throws {
     
     app.routes.defaultMaxBodySize = "500kb"
     
+    if let cert = Environment.get("TLS_CERT"), let key = Environment.get("TLS_KEY") {
+        try app.http.server.configuration.tlsConfiguration = .makeServerConfiguration(
+            certificateChain: NIOSSLCertificate.fromPEMFile(cert).map { .certificate($0) },
+            privateKey: .file(key)
+        )
+    }
+    
+
     // Admin
 
     let adminPassword = Environment.get("ADMIN_PASSWORD") ?? "albatross"
