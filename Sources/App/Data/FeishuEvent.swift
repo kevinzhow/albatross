@@ -166,7 +166,7 @@ extension FeishuEvent {
         var feishuContent: [[FeishuEvent.Content.Post.ZhCN.Content]] = []
         
         feishuContent.append([
-            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "PullRequest \(event.action) by ", href: nil),
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Pull Request \(event.action) by ", href: nil),
             FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(event.sender.login):", href: event.sender.htmlURL.absoluteString)
         ])
         
