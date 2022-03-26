@@ -1,5 +1,4 @@
 import Vapor
-import SwiftyJSON
 
 struct FeishuEvent: Codable, Content {
     let msgType: String

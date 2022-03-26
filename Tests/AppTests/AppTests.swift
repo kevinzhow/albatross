@@ -1,6 +1,5 @@
 @testable import App
 import XCTVapor
-import SwiftyJSON
 import Foundation
 
 extension DateFormatter {

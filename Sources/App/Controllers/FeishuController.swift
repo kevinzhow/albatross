@@ -1,6 +1,5 @@
 import Fluent
 import Vapor
-import SwiftyJSON
 
 struct FeishuController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
