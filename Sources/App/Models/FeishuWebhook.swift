@@ -2,7 +2,7 @@ import Fluent
 import Vapor
 
 final class FeishuWebhook: Model, Content {
-    static let schema = "todos"
+    static let schema = "feishu+webhook"
     struct FieldKeys {
         static var title: FieldKey { "title" }
         static var url: FieldKey { "url" }
