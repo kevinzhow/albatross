@@ -73,7 +73,7 @@ extension FeishuEvent {
         
         for commit in event.commits {
             feishuContent.append([
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: commit.message, href: commit.htmlURL.absoluteString),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: commit.message, href: commit.url.absoluteString),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: " - ", href: nil),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "author \(commit.author.name)", href: nil)
             ])
