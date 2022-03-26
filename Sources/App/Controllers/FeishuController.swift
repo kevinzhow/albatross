@@ -19,16 +19,34 @@ struct FeishuController: RouteCollection {
     
     func forward(req: Request) async throws -> HTTPStatus {
         
+        guard let GITHUB_EVENT = req.headers.first(name: "X-GitHub-Event") else {
+            return .notAcceptable
+        }
+        
         var feishuEvent: FeishuEvent?
-        if let githubPush = try? req.content.decode(GithubPushEvent.self) {
-            feishuEvent = FeishuEvent.createGithubPushEvent(event: githubPush)
-        } else if let githubEvent = try? req.content.decode(GithubIssueCommentEvent.self) {
-            if githubEvent.action == "deleted" {
-                return .ok
+        
+        switch GITHUB_EVENT {
+        case "issues":
+            if let event = try? req.content.decode(GithubIssueEvent.self) {
+                feishuEvent = FeishuEvent.createFromGithubIssueEvent(event: event)
             }
-            feishuEvent = FeishuEvent.createGithubCommentIssueEvent(event: githubEvent)
-        } else if let githubEvent = try? req.content.decode(GithubCreateEvent.self) {
-            feishuEvent = FeishuEvent.createFromGithubCreateEvent(event: githubEvent)
+        case "issue_comment":
+            if let githubEvent = try? req.content.decode(GithubIssueCommentEvent.self) {
+                if githubEvent.action == "deleted" {
+                    return .ok
+                }
+                feishuEvent = FeishuEvent.createGithubCommentIssueEvent(event: githubEvent)
+            }
+        case "create":
+            if let githubEvent = try? req.content.decode(GithubCreateEvent.self) {
+                feishuEvent = FeishuEvent.createFromGithubCreateEvent(event: githubEvent)
+            }
+        case "push":
+            if let githubPush = try? req.content.decode(GithubPushEvent.self) {
+                feishuEvent = FeishuEvent.createGithubPushEvent(event: githubPush)
+            }
+        default:
+            return .notAcceptable
         }
         
         guard let feishuEvent = feishuEvent else {
