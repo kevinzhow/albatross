@@ -18,6 +18,9 @@ struct FeishuController: RouteCollection {
     }
     
     func forward(req: Request) async throws -> HTTPStatus {
+        guard let webhook = try await FeishuWebhook.find(req.parameters.get("webhookID"), on: req.db) else {
+            throw Abort(.notFound)
+        }
         
         guard let GITHUB_EVENT = req.headers.first(name: "X-GitHub-Event") else {
             return .notAcceptable
@@ -61,7 +64,7 @@ struct FeishuController: RouteCollection {
             return .notAcceptable
         }
 
-        let _ = try await req.client.post("https://open.feishu.cn/open-apis/bot/v2/hook/bf70bd6e-ae83-458b-9a4d-f5d433baa2e1") { req in
+        let _ = try await req.client.post("\(webhook.url)") { req in
             try req.content.encode(feishuEvent)
         }
         return .ok
@@ -74,7 +77,7 @@ struct FeishuController: RouteCollection {
     }
 
     func delete(req: Request) async throws -> HTTPStatus {
-        guard let todo = try await FeishuWebhook.find(req.parameters.get("todoID"), on: req.db) else {
+        guard let todo = try await FeishuWebhook.find(req.parameters.get("webhookID"), on: req.db) else {
             throw Abort(.notFound)
         }
         try await todo.delete(on: req.db)
