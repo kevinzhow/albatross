@@ -3,6 +3,14 @@ import XCTVapor
 import SwiftyJSON
 import Foundation
 
+extension DateFormatter {
+    static func createGithubDateFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:sszzz"
+        return dateFormatter
+    }
+}
+
 final class AppTests: XCTestCase {
     func testComment() throws {
         
@@ -23,9 +31,7 @@ final class AppTests: XCTestCase {
         let data = try Data(contentsOf: url)
         
         let decoder = JSONDecoder()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:sszzz"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
         
         let article = try decoder.decode(GithubPushEvent.self, from: data)
         print(FeishuEvent.createGithubPushEvent(event: article))
