@@ -45,7 +45,7 @@ extension FeishuEvent {
     static func createGithubCommentIssueEvent(event: GithubIssueCommentEvent) -> FeishuEvent {
         let issueName = event.issue.title
         let issueNumber = event.issue.number
-        let issueURL = event.issue.htmlURL.absoluteString
+//        let issueURL = event.issue.htmlURL.absoluteString
         
         let title = event.repository.name
         
@@ -70,7 +70,7 @@ extension FeishuEvent {
         let title = event.repository.name
         
         let comment =  event.comment.body
-        let commentURL = event.comment.htmlURL.absoluteString
+//        let commentURL = event.comment.htmlURL.absoluteString
         
         let username = event.sender.login
         
@@ -190,7 +190,7 @@ extension FeishuEvent {
         let title = event.repository.name
         
         let comment =  event.comment.body
-        let commentURL = event.comment.htmlURL.absoluteString
+//        let commentURL = event.comment.htmlURL.absoluteString
         
         let username = event.sender.login
         

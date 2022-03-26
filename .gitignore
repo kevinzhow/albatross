@@ -7,6 +7,6 @@ DerivedData/
 db.sqlite
 .swiftpm
 .env
-testing.sqlite
-certs
-data
+/testing.sqlite
+/certs
+/data
