@@ -14,9 +14,13 @@
 #
 version: '3.7'
 
-x-shared_environment: &shared_environment
+x-shared_environment:
+  &shared_environment
   LOG_LEVEL: ${LOG_LEVEL:-debug}
-  
+  ADMIN_USERNAME: albatross
+  ADMIN_PASSWORD: albatross
+  DB_URL: /app/data/db.sqlite
+
 services:
   app:
     image: albatross:latest
@@ -24,25 +28,38 @@ services:
       context: .
     environment:
       <<: *shared_environment
+    depends_on:
+      - migrate
     ports:
       - '8080:8080'
+    volumes:
+      - ./data:/app/data
     # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
-    command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+    command:
+      [
+        "serve",
+        "--env",
+        "production",
+        "--hostname",
+        "0.0.0.0",
+        "--port",
+        "8080"
+      ]
   migrate:
     image: albatross:latest
     build:
       context: .
     environment:
       <<: *shared_environment
-    command: ["migrate", "--yes"]
-    deploy:
-      replicas: 0
+    command: [ "migrate", "--yes" ]
+    # deploy:
+    #   replicas: 0
   revert:
     image: albatross:latest
     build:
       context: .
     environment:
       <<: *shared_environment
-    command: ["migrate", "--revert", "--yes"]
+    command: [ "migrate", "--revert", "--yes" ]
     deploy:
       replicas: 0
