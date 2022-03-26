@@ -46,12 +46,12 @@ extension FeishuEvent {
     static func createGithubCommentIssueEvent(event: GithubIssueCommentEvent) -> FeishuEvent {
         let issueName = event.issue.title
         let issueNumber = event.issue.number
-        let issueURL = event.issue.url.absoluteString
+        let issueURL = event.issue.htmlURL.absoluteString
         
         let title = event.repository.name
         
         let comment =  event.comment.body
-        let commentURL = event.comment.url.absoluteString
+        let commentURL = event.comment.htmlURL.absoluteString
         
         let username = event.sender.login
         
@@ -73,7 +73,7 @@ extension FeishuEvent {
         
         for commit in event.commits {
             feishuContent.append([
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: commit.message, href: commit.url.absoluteString),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: commit.message, href: commit.htmlURL.absoluteString),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: " - ", href: nil),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "author \(commit.author.name)", href: nil)
             ])
@@ -93,12 +93,12 @@ extension FeishuEvent {
         var feishuContent: [[FeishuEvent.Content.Post.ZhCN.Content]] = []
         
         feishuContent.append([
-            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "New Branch created by ", href: nil),
-            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(event.sender.login):", href: event.sender.url.absoluteString)
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "New \(event.refType) created by ", href: nil),
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(event.sender.login):", href: event.sender.htmlURL.absoluteString)
         ])
         
         feishuContent.append([
-            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(event.ref)", href: event.repository.url.absoluteString)
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(event.ref)", href: event.repository.htmlURL.absoluteString)
         ])
 //
 //        let pusher = event.pusher.name
@@ -115,12 +115,16 @@ extension FeishuEvent {
         var feishuContent: [[FeishuEvent.Content.Post.ZhCN.Content]] = []
         
         feishuContent.append([
-            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "New Issue created by ", href: nil),
-            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(event.sender.login):", href: event.sender.url.absoluteString)
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Issue \(event.action) by ", href: nil),
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(event.sender.login):", href: event.sender.htmlURL.absoluteString)
         ])
         
         feishuContent.append([
-            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(event.issue.title)", href: event.issue.url.absoluteString)
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "#\(event.issue.number) \(event.issue.title)", href: event.issue.htmlURL.absoluteString)
+        ])
+        
+        feishuContent.append([
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(event.issue.body)", href: nil)
         ])
 //
 //        let pusher = event.pusher.name
