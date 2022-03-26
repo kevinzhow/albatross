@@ -5,10 +5,10 @@ import SwiftyJSON
 struct FeishuController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let todos = routes.grouped("hook", "feishu")
-        todos.get(use: index)
-        todos.post(use: create)
+        todos.grouped([AdminPasswordAuthenticator()]).get(use: index)
+        todos.grouped([AdminPasswordAuthenticator()]).post(use: create)
         todos.group(":webhookID") { webhook in
-            webhook.delete(use: delete)
+            webhook.grouped([AdminPasswordAuthenticator()]).delete(use: delete)
             webhook.post(use: forward)
         }
     }

@@ -2,6 +2,7 @@ import Fluent
 import FluentSQLiteDriver
 import Leaf
 import Vapor
+import CryptoSwift
 
 // configures your application
 public func configure(_ app: Application) throws {
@@ -16,9 +17,11 @@ public func configure(_ app: Application) throws {
     
     app.routes.defaultMaxBodySize = "500kb"
     
+    // Admin
+
+    let adminPassword = Environment.get("ADMIN_PASSWORD") ?? "albatross"
+    app.adminConfig = AdminConfiguration(username: Environment.get("ADMIN_USERNAME") ?? "albatross", password: adminPassword.md5())
 
     // register routes
     try routes(app)
-    
-    try app.autoMigrate()
 }
