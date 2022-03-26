@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GithubIssueEvent: Codable {
+struct GithubIssueCommentEvent: Codable {
     let action: String
     let issue: Issue
     let comment: Comment
@@ -15,7 +15,7 @@ struct GithubIssueEvent: Codable {
     let sender: Sender
 }
 
-extension GithubIssueEvent {
+extension GithubIssueCommentEvent {
     struct Issue: Codable {
         let url: URL
         let repositoryURL: URL
@@ -77,7 +77,7 @@ extension GithubIssueEvent {
     }
 }
 
-extension GithubIssueEvent.Issue {
+extension GithubIssueCommentEvent.Issue {
     struct User: Codable {
         let login: String
         let id: Int
@@ -121,7 +121,7 @@ extension GithubIssueEvent.Issue {
     }
 }
 
-extension GithubIssueEvent.Issue {
+extension GithubIssueCommentEvent.Issue {
     struct Label: Codable {
         let id: Int
         let nodeID: String
@@ -143,7 +143,7 @@ extension GithubIssueEvent.Issue {
     }
 }
 
-extension GithubIssueEvent.Issue {
+extension GithubIssueCommentEvent.Issue {
     struct Assignee: Codable {
         let login: String
         let id: Int
@@ -187,7 +187,7 @@ extension GithubIssueEvent.Issue {
     }
 }
 
-extension GithubIssueEvent.Issue {
+extension GithubIssueCommentEvent.Issue {
     struct Milestone: Codable {
         let url: URL
         let htmlURL: URL
@@ -227,7 +227,7 @@ extension GithubIssueEvent.Issue {
     }
 }
 
-extension GithubIssueEvent.Issue.Milestone {
+extension GithubIssueCommentEvent.Issue.Milestone {
     struct Creator: Codable {
         let login: String
         let id: Int
@@ -271,7 +271,7 @@ extension GithubIssueEvent.Issue.Milestone {
     }
 }
 
-extension GithubIssueEvent.Issue {
+extension GithubIssueCommentEvent.Issue {
     struct Reaction: Codable {
         let url: URL
         let totalCount: Int
@@ -299,7 +299,7 @@ extension GithubIssueEvent.Issue {
     }
 }
 
-extension GithubIssueEvent {
+extension GithubIssueCommentEvent {
     struct Comment: Codable {
         let url: URL
         let htmlURL: URL
@@ -331,7 +331,7 @@ extension GithubIssueEvent {
     }
 }
 
-extension GithubIssueEvent.Comment {
+extension GithubIssueCommentEvent.Comment {
     struct User: Codable {
         let login: String
         let id: Int
@@ -375,7 +375,7 @@ extension GithubIssueEvent.Comment {
     }
 }
 
-extension GithubIssueEvent.Comment {
+extension GithubIssueCommentEvent.Comment {
     struct Reaction: Codable {
         let url: URL
         let totalCount: Int
@@ -403,7 +403,7 @@ extension GithubIssueEvent.Comment {
     }
 }
 
-extension GithubIssueEvent {
+extension GithubIssueCommentEvent {
     struct Repository: Codable {
         let id: Int
         let nodeID: String
@@ -565,7 +565,7 @@ extension GithubIssueEvent {
     }
 }
 
-extension GithubIssueEvent.Repository {
+extension GithubIssueCommentEvent.Repository {
     struct Owner: Codable {
         let login: String
         let id: Int
@@ -609,7 +609,7 @@ extension GithubIssueEvent.Repository {
     }
 }
 
-extension GithubIssueEvent {
+extension GithubIssueCommentEvent {
     struct Sender: Codable {
         let login: String
         let id: Int

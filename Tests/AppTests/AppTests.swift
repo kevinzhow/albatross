@@ -21,7 +21,7 @@ final class AppTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.createGithubDateFormatter())
         
-        let event = try decoder.decode(GithubIssueEvent.self, from: data)
+        let event = try decoder.decode(GithubIssueCommentEvent.self, from: data)
         print(FeishuEvent.createGithubCommentIssueEvent(event: event))
     }
     

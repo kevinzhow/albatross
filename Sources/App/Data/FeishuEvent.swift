@@ -43,7 +43,7 @@ extension FeishuEvent.Content.Post.ZhCN {
 }
 
 extension FeishuEvent {
-    static func createGithubCommentIssueEvent(event: GithubIssueEvent) -> FeishuEvent {
+    static func createGithubCommentIssueEvent(event: GithubIssueCommentEvent) -> FeishuEvent {
         let issueName = event.issue.title
         let issueNumber = event.issue.number
         let issueURL = event.issue.url.absoluteString
