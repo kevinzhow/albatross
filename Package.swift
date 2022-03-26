@@ -42,7 +42,8 @@ let package = Package(
                         .copy("Resources/push.json"),
                         .copy("Resources/createEvent.json"),
                         .copy("Resources/issueEvent.json"),
-                        .copy("Resources/commitComment.json")
+                        .copy("Resources/commitComment.json"),
+                        .copy("Resources/pullRequest.json")
                     ]
                    )
     ]

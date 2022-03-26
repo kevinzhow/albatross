@@ -158,4 +158,32 @@ extension FeishuEvent {
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: feishuContent))))
     }
+    
+    static func createFromGithubPullRequestEvent(event: GithubPullRequestEvent) -> FeishuEvent {
+        
+        let title = event.repository.name
+        
+        var feishuContent: [[FeishuEvent.Content.Post.ZhCN.Content]] = []
+        
+        feishuContent.append([
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "PullRequest \(event.action) by ", href: nil),
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(event.sender.login):", href: event.sender.htmlURL.absoluteString)
+        ])
+        
+        feishuContent.append([
+            FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "#\(event.number) \(event.pullRequest.title)", href: event.pullRequest.htmlURL.absoluteString)
+        ])
+        
+        if let body = event.pullRequest.body {
+            feishuContent.append([
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: body, href: nil)
+            ])
+        }
+//
+//        let pusher = event.pusher.name
+//
+//        feishuContent.append([FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "from \(pusher):", href: nil)])
+        
+        return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: feishuContent))))
+    }
 }

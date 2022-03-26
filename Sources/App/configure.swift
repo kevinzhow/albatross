@@ -13,7 +13,8 @@ public func configure(_ app: Application) throws {
     app.migrations.add(CreateTodo())
 
     app.views.use(.leaf)
-
+    
+    app.routes.defaultMaxBodySize = "500kb"
     
 
     // register routes

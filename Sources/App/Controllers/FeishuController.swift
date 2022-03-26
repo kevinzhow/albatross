@@ -41,6 +41,10 @@ struct FeishuController: RouteCollection {
             if let event = try? req.content.decode(GithubCommitCommentEvent.self) {
                 feishuEvent = FeishuEvent.createGithubCommitCommentEvent(event: event)
             }
+        case "pull_request":
+            if let event = try? req.content.decode(GithubPullRequestEvent.self) {
+                feishuEvent = FeishuEvent.createFromGithubPullRequestEvent(event: event)
+            }
         case "create":
             if let event = try? req.content.decode(GithubCreateEvent.self) {
                 feishuEvent = FeishuEvent.createFromGithubCreateEvent(event: event)
