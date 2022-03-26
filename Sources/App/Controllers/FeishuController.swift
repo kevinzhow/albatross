@@ -28,6 +28,8 @@ struct FeishuController: RouteCollection {
         var feishuEvent: FeishuEvent?
         
         switch GITHUB_EVENT {
+        case "ping":
+            return .ok
         case "issues":
             if let event = try? req.content.decode(GithubIssueEvent.self) {
                 feishuEvent = FeishuEvent.createFromGithubIssueEvent(event: event)
