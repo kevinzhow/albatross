@@ -56,8 +56,8 @@ extension FeishuEvent {
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [
             [
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Comment \(event.action) on", href: nil),
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "#\(issueNumber) \(issueName)", href: commentURL),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Comment \(event.action) on ", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "#\(issueNumber) \(issueName) ", href: commentURL),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "by \(username)", href: event.sender.htmlURL.absoluteString),
             ],
             [
@@ -76,9 +76,9 @@ extension FeishuEvent {
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [
             [
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Comment \(event.action) on", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Comment \(event.action) on ", href: nil),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "\(event.comment.path!) line #\(event.comment.line!)", href: event.comment.htmlURL.absoluteString),
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "by", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: " by ", href: nil),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(username)", href: event.sender.htmlURL.absoluteString),
             ],
             [
@@ -93,13 +93,14 @@ extension FeishuEvent {
         
         var feishuContent: [[FeishuEvent.Content.Post.ZhCN.Content]] = []
         
-        feishuContent.append([FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "branch \(event.ref)", href: nil)])
+        feishuContent.append([FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Push on branch \(event.ref)", href: nil)])
         
         for commit in event.commits {
             feishuContent.append([
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: commit.message, href: commit.url.absoluteString),
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: " - ", href: nil),
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "author \(commit.author.name)", href: nil)
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "\(commit.id.prefix(7)) ", href: commit.url.absoluteString),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: commit.message, href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: " by ", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "\(commit.author.name)", href: nil)
             ])
         }
 //
@@ -196,9 +197,9 @@ extension FeishuEvent {
         
         return FeishuEvent(msgType: "post", content: FeishuEvent.Content(post: FeishuEvent.Content.Post(zhCN: FeishuEvent.Content.Post.ZhCN(title: title, content: [
             [
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Comment \(event.action) on", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "Comment \(event.action) on ", href: nil),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "\(event.comment.path!) line #\(event.comment.line!)", href: event.comment.htmlURL.absoluteString),
-                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: "by", href: nil),
+                FeishuEvent.Content.Post.ZhCN.Content(tag: "text", text: " by ", href: nil),
                 FeishuEvent.Content.Post.ZhCN.Content(tag: "a", text: "@\(username)", href: event.sender.htmlURL.absoluteString),
             ],
             [
