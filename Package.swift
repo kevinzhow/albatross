@@ -40,6 +40,7 @@ let package = Package(
                     resources: [
                         .copy("Resources/createComment.json"),
                         .copy("Resources/push.json"),
+                        .copy("Resources/push2.json"),
                         .copy("Resources/createEvent.json"),
                         .copy("Resources/issueEvent.json"),
                         .copy("Resources/commitComment.json"),

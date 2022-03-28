@@ -50,7 +50,7 @@ extension GithubPushEvent {
         let `private`: Bool
         let owner: Owner
         let htmlURL: URL
-        let description: String
+        let description: String?
         let fork: Bool
         let url: URL
         let forksURL: URL

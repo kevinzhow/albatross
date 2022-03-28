@@ -1,0 +1,229 @@
+{
+  "ref": "refs/heads/master",
+  "before": "8b9924a1c4dcca2cf25fc3de7174382753c68994",
+  "after": "4257a3ba31f19ea6bb6ddaba3403f181744b95ad",
+  "repository": {
+    "id": 469048063,
+    "node_id": "R_kgDOG_Ua_w",
+    "name": "miaojiandao_study_api",
+    "full_name": "kevinzhow/miaojiandao_study_api",
+    "private": true,
+    "owner": {
+      "name": "kevinzhow",
+      "email": "kevinchou.c@gmail.com",
+      "login": "kevinzhow",
+      "id": 1156192,
+      "node_id": "MDQ6VXNlcjExNTYxOTI=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1156192?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kevinzhow",
+      "html_url": "https://github.com/kevinzhow",
+      "followers_url": "https://api.github.com/users/kevinzhow/followers",
+      "following_url": "https://api.github.com/users/kevinzhow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kevinzhow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kevinzhow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kevinzhow/subscriptions",
+      "organizations_url": "https://api.github.com/users/kevinzhow/orgs",
+      "repos_url": "https://api.github.com/users/kevinzhow/repos",
+      "events_url": "https://api.github.com/users/kevinzhow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kevinzhow/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "html_url": "https://github.com/kevinzhow/miaojiandao_study_api",
+    "description": null,
+    "fork": false,
+    "url": "https://github.com/kevinzhow/miaojiandao_study_api",
+    "forks_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/forks",
+    "keys_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/teams",
+    "hooks_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/hooks",
+    "issue_events_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/events",
+    "assignees_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/tags",
+    "blobs_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/languages",
+    "stargazers_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/stargazers",
+    "contributors_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/contributors",
+    "subscribers_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/subscribers",
+    "subscription_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/subscription",
+    "commits_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/issues/comments{/number}",
+    "contents_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/merges",
+    "archive_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/downloads",
+    "issues_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/labels{/name}",
+    "releases_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/releases{/id}",
+    "deployments_url": "https://api.github.com/repos/kevinzhow/miaojiandao_study_api/deployments",
+    "created_at": 1647080327,
+    "updated_at": "2022-03-12T10:18:53Z",
+    "pushed_at": 1648459913,
+    "git_url": "git://github.com/kevinzhow/miaojiandao_study_api.git",
+    "ssh_url": "git@github.com:kevinzhow/miaojiandao_study_api.git",
+    "clone_url": "https://github.com/kevinzhow/miaojiandao_study_api.git",
+    "svn_url": "https://github.com/kevinzhow/miaojiandao_study_api",
+    "homepage": null,
+    "size": 49,
+    "stargazers_count": 0,
+    "watchers_count": 0,
+    "language": "Swift",
+    "has_issues": true,
+    "has_projects": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "has_pages": false,
+    "forks_count": 0,
+    "mirror_url": null,
+    "archived": false,
+    "disabled": false,
+    "open_issues_count": 0,
+    "license": null,
+    "allow_forking": true,
+    "is_template": false,
+    "topics": [
+
+    ],
+    "visibility": "private",
+    "forks": 0,
+    "open_issues": 0,
+    "watchers": 0,
+    "default_branch": "master",
+    "stargazers": 0,
+    "master_branch": "master"
+  },
+  "pusher": {
+    "name": "kevinzhow",
+    "email": "kevinchou.c@gmail.com"
+  },
+  "sender": {
+    "login": "kevinzhow",
+    "id": 1156192,
+    "node_id": "MDQ6VXNlcjExNTYxOTI=",
+    "avatar_url": "https://avatars.githubusercontent.com/u/1156192?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/kevinzhow",
+    "html_url": "https://github.com/kevinzhow",
+    "followers_url": "https://api.github.com/users/kevinzhow/followers",
+    "following_url": "https://api.github.com/users/kevinzhow/following{/other_user}",
+    "gists_url": "https://api.github.com/users/kevinzhow/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/kevinzhow/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/kevinzhow/subscriptions",
+    "organizations_url": "https://api.github.com/users/kevinzhow/orgs",
+    "repos_url": "https://api.github.com/users/kevinzhow/repos",
+    "events_url": "https://api.github.com/users/kevinzhow/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/kevinzhow/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "created": false,
+  "deleted": false,
+  "forced": false,
+  "base_ref": null,
+  "compare": "https://github.com/kevinzhow/miaojiandao_study_api/compare/8b9924a1c4dc...4257a3ba31f1",
+  "commits": [
+    {
+      "id": "175f794391649a3747917f6b68a9232a891607c7",
+      "tree_id": "99f26d362b9e7330beb0bab288ffa1b5dec3de61",
+      "distinct": true,
+      "message": "fix(docker): db test",
+      "timestamp": "2022-03-28T17:31:30+08:00",
+      "url": "https://github.com/kevinzhow/miaojiandao_study_api/commit/175f794391649a3747917f6b68a9232a891607c7",
+      "author": {
+        "name": "kevinzhow",
+        "email": "kevinchou.c@gmail.com",
+        "username": "kevinzhow"
+      },
+      "committer": {
+        "name": "kevinzhow",
+        "email": "kevinchou.c@gmail.com",
+        "username": "kevinzhow"
+      },
+      "added": [
+
+      ],
+      "removed": [
+
+      ],
+      "modified": [
+        "docker-compose.yml"
+      ]
+    },
+    {
+      "id": "4257a3ba31f19ea6bb6ddaba3403f181744b95ad",
+      "tree_id": "2a0269ee38cbd5607644af3f2f48b12e08bde500",
+      "distinct": true,
+      "message": "feat(word_package): add name and public",
+      "timestamp": "2022-03-28T17:31:50+08:00",
+      "url": "https://github.com/kevinzhow/miaojiandao_study_api/commit/4257a3ba31f19ea6bb6ddaba3403f181744b95ad",
+      "author": {
+        "name": "kevinzhow",
+        "email": "kevinchou.c@gmail.com",
+        "username": "kevinzhow"
+      },
+      "committer": {
+        "name": "kevinzhow",
+        "email": "kevinchou.c@gmail.com",
+        "username": "kevinzhow"
+      },
+      "added": [
+        "Sources/App/Controllers/WordPackageController.swift"
+      ],
+      "removed": [
+        "Sources/App/Controllers/WordController.swift"
+      ],
+      "modified": [
+        "Sources/App/Models/Grammar.swift",
+        "Sources/App/Models/Sentence.swift",
+        "Sources/App/Models/Word.swift",
+        "Sources/App/Models/WordPackage.swift",
+        "Sources/App/routes.swift"
+      ]
+    }
+  ],
+  "head_commit": {
+    "id": "4257a3ba31f19ea6bb6ddaba3403f181744b95ad",
+    "tree_id": "2a0269ee38cbd5607644af3f2f48b12e08bde500",
+    "distinct": true,
+    "message": "feat(word_package): add name and public",
+    "timestamp": "2022-03-28T17:31:50+08:00",
+    "url": "https://github.com/kevinzhow/miaojiandao_study_api/commit/4257a3ba31f19ea6bb6ddaba3403f181744b95ad",
+    "author": {
+      "name": "kevinzhow",
+      "email": "kevinchou.c@gmail.com",
+      "username": "kevinzhow"
+    },
+    "committer": {
+      "name": "kevinzhow",
+      "email": "kevinchou.c@gmail.com",
+      "username": "kevinzhow"
+    },
+    "added": [
+      "Sources/App/Controllers/WordPackageController.swift"
+    ],
+    "removed": [
+      "Sources/App/Controllers/WordController.swift"
+    ],
+    "modified": [
+      "Sources/App/Models/Grammar.swift",
+      "Sources/App/Models/Sentence.swift",
+      "Sources/App/Models/Word.swift",
+      "Sources/App/Models/WordPackage.swift",
+      "Sources/App/routes.swift"
+    ]
+  }
+}
