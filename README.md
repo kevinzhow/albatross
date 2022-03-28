@@ -72,7 +72,7 @@ If you want to enable build-in TLS supports, please modify the `docker-compose.y
 
 ```yaml
 environment:
-  ENABLE_TLS: true
+  ENABLE_TLS: "true"
   
 volumes:
   - ./data:/app/data/
