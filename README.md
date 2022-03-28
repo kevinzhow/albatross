@@ -31,22 +31,53 @@ docker pull ghcr.io/kevinzhow/albatross:v0.0.9
 
 Download [docker-compose.yml](https://gist.github.com/kevinzhow/5f68c99760463a3dc195f7bd18ab64af) template here.
 
-### 2.Prepare .env file
+```yml
+# albatross
+version: '3.7'
 
-Defined a `.env` file with following params.
-
+services:
+  app:
+    image: ghcr.io/kevinzhow/albatross:latest
+    restart: unless-stopped
+    environment:
+      LOG_LEVEL: ${LOG_LEVEL:-debug}
+      ADMIN_USERNAME: albatross
+      ADMIN_PASSWORD: albatross
+    ports:
+      - '1780:8080'
+    volumes:
+      - ./data:/app/data/
+    #user: root  # uncomment to run as root if you runs docker-compose as root
+    command:
+      [
+        "serve",
+        "--env",
+        "production",
+        "--hostname",
+        "0.0.0.0",
+        "--port",
+        "8080"
+      ]
 ```
-ALBATROSS_TAG=v0.0.9
-LOCAL_CERT=/xx/cert.pem
-LOCAL_KEY=/xx/key.pem
-```
 
-Excludes `LOCAL_CERT` and `LOCAL_KEY` if you don't need build-in tls support.
-
-### 3.Up
+### 2.Up
 
 ```
 docker-compose up
+```
+
+### Build-in TLS Supports
+
+If you want to enable build-in TLS supports, please modify the `docker-compose.yml` as follows
+
+```yaml
+environment:
+  ENABLE_TLS: true
+  
+volumes:
+  - ./data:/app/data/
+  - /path/to/cert.pem:/app/certs/cert.pem
+  - /path/to/key.pem:/app/certs/key.pem
 ```
 
 ## Usage
