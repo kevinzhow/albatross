@@ -1,27 +1,7 @@
 # Docker Compose file for Vapor
 #
 # Install Docker on your system to run and test
-# your Vapor app in a production-like environment.
-#
-# Note: This file is intended for testing and does not
-# implement best practices for a production deployment.
-#
-# Learn more: https://docs.docker.com/compose/reference/
-#
-#   Build images: docker-compose build
-#      Start app: docker-compose up app
-#       Stop all: docker-compose down
-#
 version: '3.7'
-
-x-shared_environment:
-  &shared_environment
-  LOG_LEVEL: ${LOG_LEVEL:-debug}
-  ADMIN_USERNAME: albatross
-  ADMIN_PASSWORD: albatross
-  DB_URL: /app/data/db.sqlite
-#  TLS_CERT: /app/certs/cert.pem
-#  TLS_KEY: /app/certs/key.pem
 
 services:
   app:
@@ -29,9 +9,9 @@ services:
     build:
       context: .
     environment:
-      <<: *shared_environment
-    depends_on:
-      - migrate
+        ADMIN_USERNAME: albatross
+        ADMIN_PASSWORD: albatross
+        ENABLE_TLS: true
     ports:
       - '8080:8080'
     volumes:
@@ -49,29 +29,3 @@ services:
         "--port",
         "8080"
       ]
-  migrate:
-    image: albatross:latest
-    build:
-      context: .
-    environment:
-      <<: *shared_environment
-    command: [ "migrate", "--yes" ]
-    volumes:
-      - ./data:/app/data/
-      - ./certs/cert.pem:/app/certs/cert.pem
-      - ./certs/key.pem:/app/certs/key.pem
-    # deploy:
-    #   replicas: 0
-  revert:
-    image: albatross:latest
-    build:
-      context: .
-    environment:
-      <<: *shared_environment
-    command: [ "migrate", "--revert", "--yes" ]
-    volumes:
-      - ./data:/app/data/
-      - ./certs/cert.pem:/app/certs/cert.pem
-      - ./certs/key.pem:/app/certs/key.pem
-    deploy:
-      replicas: 0
