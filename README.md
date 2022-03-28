@@ -1,5 +1,7 @@
 # Albatross
 
+![Logo](./albatross.png=300x300)
+
 A Swift webhook handler which designed to translate and forward Github Webhook to Other Webhook.
 
 ![Preview](./screenshot.png)
@@ -35,7 +37,7 @@ Download [docker-compose.yml](https://gist.github.com/kevinzhow/5f68c99760463a3d
 
 ```yml
 # albatross
-version: '3.7'
+version: "3.7"
 
 services:
   app:
@@ -46,7 +48,7 @@ services:
       ADMIN_USERNAME: albatross
       ADMIN_PASSWORD: albatross
     ports:
-      - '1780:8080'
+      - "1780:8080"
     volumes:
       - ./data:/app/data/
     #user: root  # uncomment to run as root if you runs docker-compose as root
@@ -58,7 +60,7 @@ services:
         "--hostname",
         "0.0.0.0",
         "--port",
-        "8080"
+        "8080",
       ]
 ```
 
@@ -75,7 +77,7 @@ If you want to enable build-in TLS supports, please modify the `docker-compose.y
 ```yaml
 environment:
   ENABLE_TLS: "true"
-  
+
 volumes:
   - ./data:/app/data/
   - /path/to/cert.pem:/app/certs/cert.pem
