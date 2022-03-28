@@ -2,6 +2,8 @@
 
 A Swift webhook handler which designed to translate and forward Github Webhook to Other Webhook.
 
+![Preview](./screenshot.png)
+
 ## Overview
 
 Currently Albatross supports Feishu only.
