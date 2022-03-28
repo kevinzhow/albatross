@@ -11,7 +11,7 @@ Currently Albatross supports Feishu only.
 Pull image from the command line:
 
 ```shell
-docker pull ghcr.io/kevinzhow/albatross:v0.0.9
+docker pull ghcr.io/kevinzhow/albatross:latest
 ```
 
 ## Supported Github Event
