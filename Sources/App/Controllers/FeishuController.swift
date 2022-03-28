@@ -6,7 +6,7 @@ struct FeishuController: RouteCollection {
         let todos = routes.grouped("hook", "feishu")
         todos.grouped([AdminPasswordAuthenticator()]).get(use: index)
         todos.grouped([AdminPasswordAuthenticator()]).post(use: create)
-        todos.group(":webhookID") { webhook in
+        todos.group(":webhookHandlerID") { webhook in
             webhook.grouped([AdminPasswordAuthenticator()]).delete(use: delete)
             webhook.post(use: forward)
         }
@@ -17,7 +17,7 @@ struct FeishuController: RouteCollection {
     }
     
     func forward(req: Request) async throws -> HTTPStatus {
-        guard let webhook = try await FeishuWebhookHandler.find(req.parameters.get("webhookID"), on: req.db) else {
+        guard let webhook = try await FeishuWebhookHandler.find(req.parameters.get("webhookHandlerID"), on: req.db) else {
             throw Abort(.notFound)
         }
         
@@ -82,7 +82,7 @@ struct FeishuController: RouteCollection {
     }
 
     func delete(req: Request) async throws -> HTTPStatus {
-        guard let todo = try await FeishuWebhookHandler.find(req.parameters.get("webhookID"), on: req.db) else {
+        guard let todo = try await FeishuWebhookHandler.find(req.parameters.get("webhookHandlerID"), on: req.db) else {
             throw Abort(.notFound)
         }
         try await todo.delete(on: req.db)
