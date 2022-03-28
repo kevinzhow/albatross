@@ -9,9 +9,10 @@ services:
     build:
       context: .
     environment:
+        LOG_LEVEL: ${LOG_LEVEL:-debug}
         ADMIN_USERNAME: albatross
         ADMIN_PASSWORD: albatross
-        ENABLE_TLS: true
+        ENABLE_TLS: false
     ports:
       - '8080:8080'
     volumes:
