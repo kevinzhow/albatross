@@ -1,6 +1,6 @@
 # Albatross
 
-![Logo](./albatross.png=300x300)
+<img src="./albatross.png" width="200" height="200">
 
 A Swift webhook handler which designed to translate and forward Github Webhook to Other Webhook.
 
