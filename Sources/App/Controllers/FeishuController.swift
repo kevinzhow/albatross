@@ -36,6 +36,9 @@ struct FeishuController: RouteCollection {
             }
         case "issues":
             if let event = try? req.content.decode(GithubIssueEvent.self) {
+                if ["labeled", "assigned", "closed", "edited"].contains(event.action)  {
+                    return .ok
+                }
                 feishuEvent = FeishuEvent.createFromGithubIssueEvent(event: event)
             }
         case "issue_comment":
